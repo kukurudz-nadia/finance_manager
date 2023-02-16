@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+
+  get 'main_pages/index'
   resources :transactions
   resources :categories
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'main_pages#index'
 end
