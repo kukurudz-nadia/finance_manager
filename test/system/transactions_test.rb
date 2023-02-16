@@ -18,6 +18,7 @@ class TransactionsTest < ApplicationSystemTestCase
     fill_in "Category", with: @transaction.category_id
     fill_in "Description", with: @transaction.description
     fill_in "Odate", with: @transaction.odate
+    fill_in "Kind", with: @transaction.kind
     click_on "Create Transaction"
 
     assert_text "Transaction was successfully created"
@@ -32,6 +33,7 @@ class TransactionsTest < ApplicationSystemTestCase
     fill_in "Category", with: @transaction.category_id
     fill_in "Description", with: @transaction.description
     fill_in "Odate", with: @transaction.odate
+    fill_in "Kind", with: @transaction.kind
     click_on "Update Transaction"
 
     assert_text "Transaction was successfully updated"
