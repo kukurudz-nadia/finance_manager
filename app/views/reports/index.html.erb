@@ -1,0 +1,14 @@
+<h1>Reports</h1>
+<form action="index" method="GET">
+  date_from: <input type="date" name="date_from"><br>
+  date_to: <input type="date" name="date_to"><br>
+  kind: <input type="text" name="kind"><br>
+  category_id: <input type="text" name="category_id"><br>
+  <input type="submit" value="Create report">
+  <%= button_to "Reset", action: "index" %>
+</form>
+<div>
+  Show report:<br>
+  <%= button_to "By category", reports_report_by_category_path, method: :get %>
+  <%= button_to "By date", reports_report_by_dates_path, method: :get %>
+</div>
