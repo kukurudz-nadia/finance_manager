@@ -1,0 +1,5 @@
+<% @transactions.each do |date, sum|%>
+  <p>Date: <%= date %></p>
+  <p>Sum:<%= sum %></p>
+<%end%>
+<%= button_to "Back to reports", reports_index_path, method: :get %>

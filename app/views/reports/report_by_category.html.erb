@@ -1,0 +1,27 @@
+<% if @categories.nil? or @categories.empty?%>
+  <h1>You have to fill the form correctly</h1>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <td>Category</td>
+      <td>Amount</td>
+    </tr>
+  </thead>
+  <tbody>
+      <% @categories.each do |name, amount|%>
+      <tr>
+        <td><%= name %></td>
+        <td><%= amount %></td>
+      </tr>
+      <%end%>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Total sum:</td>
+      <td><%= @total_sum %></td>
+    </tr>
+  </tfoot>
+</table>
+<%end%>
+<%= button_to "Back to reports", reports_index_path, method: :get %>
