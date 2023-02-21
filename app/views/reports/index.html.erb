@@ -1,14 +1,38 @@
-<h1>Reports</h1>
-<form action="index" method="GET">
-  date_from: <input type="date" name="date_from"><br>
-  date_to: <input type="date" name="date_to"><br>
-  kind: <input type="text" name="kind"><br>
-  category_id: <input type="text" name="category_id"><br>
-  <input type="submit" value="Create report">
-  <%= button_to "Reset", action: "index" %>
-</form>
-<div>
-  Show report:<br>
-  <%= button_to "By category", reports_report_by_category_path, method: :get %>
-  <%= button_to "By date", reports_report_by_dates_path, method: :get %>
+<div style="margin: 20px 250px 30px 250px">
+<div class="card text-white bg-info text-center">
+  <div class="card-header shadow p-3 mb-5 bg-grey rounded", style = "text-shadow: 2px 2px #8B4513;"><h1>Reports</h1></div>
+  <form action="index" method="GET">
+  <div class="card-body">
+    <div class="shadow-lg p-2 mb-5 bg-white rounded text-dark">
+      <h5 class="card-title", style = "text-shadow: 1px 2px #D3D3D3;">Date from:</h5>
+      <p class="card-text" ><input class="form-control input-lg border border-info border-3"  type="date" name="date_from" ><br></p>
+    </div>
+
+    <div class="shadow-lg p-2 mb-5 bg-white rounded text-dark">
+      <h5 class="card-title", style = "text-shadow: 1px 2px #D3D3D3;">Date to:</h5>
+      <p class="card-text"><input class="form-control input-lg border border-info border-3" type="date" name="date_to"><br></p>
+    </div>
+
+    <div class="shadow-lg p-2 mb-5 bg-white rounded text-dark">
+      <h5 class="card-title", style = "text-shadow: 1px 2px #D3D3D3;">Kind:</h5>
+      <p class="card-text"><input class="form-control input-lg border border-info border-3 text-center" type="text" name="kind"><br></p>
+    </div>
+
+    <div class="shadow-lg p-2 mb-3 bg-white rounded text-dark">
+      <h5 class="card-title", style = "text-shadow: 1px 2px #D3D3D3;">Category id:</h5>
+      <p class="card-text"><input class="form-control input-lg border border-info border-3 text-center" type="text" name="category_id"><br></p>
+    </div>
+
+    <input class="btn btn-secondary  ps-3 pe-3 me-3" type="submit" value="Create report">
+    <%= link_to "Reset", reports_index_path, class:"btn btn-secondary" %>
+
+    </form>
+    <div class = "shadow-lg p-3 mb-5 mt-3 bg-grey rounded text-center">
+     <h3 class="card-title mb-3", style = "text-shadow: 2px 2px #8B4513;">Show report:<br></h3>
+      <%= link_to "By category", reports_report_by_category_path, method: :get, class:"btn btn-light border border-secondary border-3 ps-3 pe-3 me-3" %>
+      <%= link_to "By date", reports_report_by_dates_path, method: :get, class:"btn btn-light border border-secondary border-3 " %>
+    </div>
+  </div>
 </div>
+</div>
+
