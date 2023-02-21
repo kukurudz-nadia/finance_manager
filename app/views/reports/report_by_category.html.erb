@@ -1,27 +1,31 @@
 <% if @categories.nil? or @categories.empty?%>
   <h1>You have to fill the form correctly</h1>
 <% else %>
-<table>
-  <thead>
+<table class="table rounded m-3">
+  <thead class="bg-info">
     <tr>
-      <td>Category</td>
-      <td>Amount</td>
+      <th scope="col">Category</th>
+      <th scope="col">Amount</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table-info">
+    <tr>
       <% @categories.each do |name, amount|%>
       <tr>
         <td><%= name %></td>
         <td><%= amount %></td>
       </tr>
       <%end%>
+    </tr>
+
   </tbody>
-  <tfoot>
+  <tfoot class="table-secondary">
     <tr>
       <td>Total sum:</td>
       <td><%= @total_sum %></td>
     </tr>
   </tfoot>
 </table>
+
 <%end%>
-<%= button_to "Back to reports", reports_index_path, method: :get %>
+<%= button_to "Back to reports", reports_index_path, method: :get, class:"btn btn-light border border-info border-3" %>
