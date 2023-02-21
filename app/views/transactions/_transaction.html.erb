@@ -1,27 +1,29 @@
-<div id="<%= dom_id transaction %>">
+<div class="shadow-lg p-2 mb-1 bg-info rounded text-sec">
   <p>
-    <strong>Amount:</strong>
-    <%= transaction.amount %>
+    <strong class="text-dark">Amount:</strong>
+    <span class="text-light", style="font-weight: bold;"><%= transaction.amount %></span>
   </p>
 
   <p>
-    <strong>Odate:</strong>
-    <%= transaction.odate %>
+    <strong class="text-dark">Odate:</strong>
+    <span class="text-light", style="font-weight: bold;"><%= transaction.odate %></span>
   </p>
 
   <p>
-    <strong>Description:</strong>
-    <%= transaction.description %>
+    <strong class="text-dark">Description:</strong>
+    <span class="text-light", style="font-weight: bold;"><%= transaction.description %></span>
   </p>
 
   <p>
-    <strong>Category:</strong>
-    <%= transaction.category_id %>
+    <strong class="text-dark">Category:</strong>
+    <span class="text-light", style="font-weight: bold;"><%= transaction.category_id %></span>
   </p>
 
   <p>
-    <strong>Kind og transaction:</strong>
-    <%= transaction.kind %>
+    <strong class="text-dark">Kind of transaction:</strong>
+    <span class="text-light", style="font-weight: bold;"><%= transaction.kind %></span>
   </p>
 
 </div>
+
+ 

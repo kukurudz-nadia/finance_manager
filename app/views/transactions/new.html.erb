@@ -1,9 +1,11 @@
-<h1>New transaction</h1>
+<div class="text-center">
+  <h1>New transaction</h1>
 
-<%= render "form", transaction: @transaction %>
+  <%= render "form", transaction: @transaction %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to transactions", transactions_path %>
+  <div>
+    <%= link_to "Back to transactions", transactions_path, class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;" %>
+  </div>
 </div>
