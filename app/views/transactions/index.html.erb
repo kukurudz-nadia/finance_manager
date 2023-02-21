@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Transactions</h1>
-
-<div id="transactions">
-  <% @transactions.each do |transaction| %>
-    <%= render transaction %>
-    <p>
-      <%= link_to "Show this transaction", transaction %>
-    </p>
-  <% end %>
+<h1 class="text-center", style = "text-shadow: 3px 3px #D3D3D3;">Transactions</h1>
+<div class="col-4", style="margin-left: 570px;">
+  <div class="card">
+    <div id="transactions">
+    <% @transactions.each do |transaction| %>
+      <div>
+        <%= render transaction %>
+      </div>
+      <div class="text-center">
+      <p>
+        <%= link_to "Show this transaction", transaction, class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;"%>
+      </p>
+      </div>
+    <% end %>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New transaction", new_transaction_path %>

@@ -1,10 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @transaction %>
-
-<div>
-  <%= link_to "Edit this transaction", edit_transaction_path(@transaction) %> |
-  <%= link_to "Back to transactions", transactions_path %>
-
-  <%= button_to "Destroy this transaction", @transaction, method: :delete %>
+<div style="margin: 20px 250px 30px 250px">
+<div class="card text-white bg-light text-center">
+  <div class="card-body">
+    <%= render @transaction %>
+  <div>
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col-4">
+        <%= link_to "Edit this transaction", edit_transaction_path(@transaction), class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;" %>
+      </div>
+      <div class="col-4">    
+        <%= button_to "Destroy this transaction", @transaction, method: :delete , class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;"%>
+      </div>
+      <div class="col-4">
+        <%= link_to "Back to transactions", transactions_path, class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;" %>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+

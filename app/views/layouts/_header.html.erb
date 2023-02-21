@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <%= image_tag("logo.webp", height:"40px" )%>
-      <a class="navbar-brand">Finance Manager</a>
+      <a class="navbar-brand text-light">Finance Manager</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <%= link_to "Home", root_path, class:"nav-link text-info" %>
@@ -10,8 +10,16 @@
         <li class="nav-item">
           <%= link_to "Reports", reports_index_path, class:"nav-link text-info" %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-info" href="#">Categories</a>
+         <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Transactions
+              </a>
+              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <ul>
+                  <%= link_to "Create", new_transaction_path, class:" mb-1 btn btn-secondary text-light", style:"margin-left: 15px;" %>
+                  <%= link_to "Show all", transactions_path, class:"ms-2 btn btn-secondary text-light" %>
+                </ul>
+              </div>
         </li>
         <li class="nav-item">
           <a class="nav-link text-info" href="#">Help</a>

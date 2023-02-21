@@ -1,7 +1,8 @@
 <% if @categories.nil? or @categories.empty?%>
   <h1>You have to fill the form correctly</h1>
 <% else %>
-<table class="table rounded m-3">
+<div style = "margin: 40px 800px 80px 100px;">
+<table class="table table-bordered table-striped">
   <thead class="bg-info">
     <tr>
       <th scope="col">Category</th>
@@ -26,6 +27,6 @@
     </tr>
   </tfoot>
 </table>
-
+</div>
 <%end%>
-<%= button_to "Back to reports", reports_index_path, method: :get, class:"btn btn-light border border-info border-3" %>
+
