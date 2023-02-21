@@ -1,16 +1,6 @@
 <% if @categories.nil? or @categories.empty?%>
   <h1>You have to fill the form correctly</h1>
 <% else %>
-<<<<<<< HEAD
-<table>
-  <thead>
-    <tr>
-      <td>Category</td>
-      <td>Amount</td>
-    </tr>
-  </thead>
-  <tbody>
-=======
 <table class="table rounded m-3">
   <thead class="bg-info">
     <tr>
@@ -27,26 +17,17 @@
         <td><%= amount %></td>
       </tr>
       <%end%>
-<<<<<<< HEAD
-  </tbody>
-  <tfoot>
-=======
     </tr>
 
   </tbody>
   <tfoot class="table-secondary">
->>>>>>> add-bootstrap
     <tr>
       <td>Total sum:</td>
       <td><%= @total_sum %></td>
     </tr>
   </tfoot>
 </table>
-<<<<<<< HEAD
-<%end%>
-<%= button_to "Back to reports", reports_index_path, method: :get %>
-=======
 
 <%end%>
 <%= button_to "Back to reports", reports_index_path, method: :get, class:"btn btn-light border border-info border-3" %>
->>>>>>> add-bootstrap
+
