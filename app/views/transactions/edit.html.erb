@@ -1,10 +1,16 @@
-<h1>Editing transaction</h1>
+<div class="text-center">
+  <div style="margin: 20px 400px 30px 400px">
+  <div class="card text-white bg-info text-center">
+  <div class="card-header shadow p-3 mb-5 bg-grey rounded", style = "text-shadow: 2px 2px #8B4513;"><h1>Editing transaction</h1></div>
 
-<%= render "form", transaction: @transaction %>
+  <%= render "form", transaction: @transaction %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this transaction", @transaction %> |
-  <%= link_to "Back to transactions", transactions_path %>
+  <div>
+    <%= link_to "Show this transaction", @transaction, class:"btn btn-light text-info border border-secondary mb-5 ps-3 pe-3 me-3" , style:"font-weight: bold;" %> 
+    <%= link_to "Back to transactions", transactions_path, class:"btn btn-light text-info border border-secondary mb-5" , style:"font-weight: bold;" %>
+  </div>
+</div>
+</div>
 </div>
