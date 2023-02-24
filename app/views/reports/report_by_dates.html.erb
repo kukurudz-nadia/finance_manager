@@ -3,3 +3,30 @@
   <p>Sum:<%= sum %></p>
 <%end%>
 <%= button_to "Back to reports", reports_index_path, method: :get %>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: <%=raw @dates%>,
+      datasets: [{
+        label: 'Reports by date',
+        data: <%=raw @sum%>,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
