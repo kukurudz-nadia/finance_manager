@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   end
 
   def report_by_category
-    transactions = Transaction.where(kind: @@params[:kind])
+    transactions = Transaction.where(kind: @@params[:kind]).where('odate BETWEEN ? AND ?', @@params[:date_from], @@params[:date_to])
     category_ids = []
 
     transactions.each do |transaction|
@@ -19,6 +19,13 @@ class ReportsController < ApplicationController
     end
 
     @total_sum = @categories.values.sum
+
+    @category_names = []
+    @amount = []
+    @categories.each do |name, amount|
+      @category_names << name
+      @amount << amount
+    end
   end
   
   def report_by_dates

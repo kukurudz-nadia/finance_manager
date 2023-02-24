@@ -6,7 +6,7 @@
   <thead class="bg-info">
     <tr>
       <th scope="col">Category</th>
-      <th scope="col">Amount</th>
+      <th scope="col">Sum</th>
     </tr>
   </thead>
   <tbody class="table-info">
@@ -30,4 +30,25 @@
 </div>
 <%end%>
 
+<div style = "width:600px; height:400px;">
+  <canvas id="pie-chart"></canvas>
+</div>
 
+<script>
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: <%=raw @category_names%>,
+      datasets: [{
+        label: "Sum",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: <%=raw @amount%>
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+      }
+    }
+});
+</script>
