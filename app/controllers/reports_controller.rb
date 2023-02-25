@@ -30,12 +30,12 @@ class ReportsController < ApplicationController
   
   def report_by_dates
     @transactions = Transaction.where(kind: @@params[:kind]).where('odate BETWEEN ? AND ?', @@params[:date_from], @@params[:date_to]).group('odate::date').sum(:amount)
-    puts(@transactions)
     @dates = []
     @sum = []
     @transactions.each do |date, sum|
-     @dates << date.to_s 
-     @sum << sum.to_s
+      reversed_date = date.strftime("%d-%m-%Y")
+      @dates << reversed_date
+      @sum << sum.to_s
     end
   end
 end
