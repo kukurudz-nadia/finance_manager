@@ -17,6 +17,7 @@ test:
   database: finance_manager_test
 
 production:
+  url: <%= ENV["DATABASE_URL"]%>
   <<: *default
   database: finance_manager_production
   username: finance_manager
