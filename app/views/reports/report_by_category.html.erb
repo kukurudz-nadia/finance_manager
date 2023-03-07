@@ -2,6 +2,8 @@
   <h1>You have to fill the form correctly</h1>
 <% else %>
 <div style = "margin: 40px 800px 80px 100px;">
+<h1>Report from <%= @dates.first %> to <%=  @dates.last%></h1>
+<h2>Kind: <%=  @kind %></h2>
 <table class="table table-bordered table-striped">
   <thead class="bg-info">
     <tr>
@@ -28,9 +30,7 @@
   </tfoot>
 </table>
 </div>
-<%end%>
-
-<div style = "width:600px; height:400px;">
+<div style = "width:600px; height:400px;", class = "mb-5">
   <canvas id="pie-chart"></canvas>
 </div>
 
@@ -52,3 +52,4 @@ new Chart(document.getElementById("pie-chart"), {
     }
 });
 </script>
+<%end%>

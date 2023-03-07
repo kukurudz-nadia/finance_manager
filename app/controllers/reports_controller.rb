@@ -20,16 +20,23 @@ class ReportsController < ApplicationController
 
     @total_sum = @categories.values.sum
 
+    #for views
     @category_names = []
     @amount = []
     @categories.each do |name, amount|
       @category_names << name
       @amount << amount
     end
+    @dates = []
+    @dates << Date.parse(@@params[:date_from]).strftime("%d-%m-%Y")
+    @dates << Date.parse(@@params[:date_to]).strftime("%d-%m-%Y")
+    @kind = @@params[:kind].downcase
   end
   
   def report_by_dates
     @transactions = Transaction.where(kind: @@params[:kind]).where('odate BETWEEN ? AND ?', @@params[:date_from], @@params[:date_to]).group('odate::date').sum(:amount)
+    
+    #for views
     @dates = []
     @sum = []
     @transactions.each do |date, sum|
