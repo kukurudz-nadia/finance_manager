@@ -1,6 +1,3 @@
-Сourse project for Prometheus SoftServe: RUBY101
-"Розробка вебдодатків на Ruby від SoftServe"
-
 Versions:
 - ruby 3.0.2
 - rails 7.0.4
