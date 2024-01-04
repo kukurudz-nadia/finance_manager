@@ -2,7 +2,7 @@
 "Розробка вебдодатків на Ruby від SoftServe"
 
 Versions:
-- ruby 3.0.3
+- ruby 3.0.2
 - rails 7.0.4
 - posgresql 12
 
