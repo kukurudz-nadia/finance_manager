@@ -18,6 +18,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /transactions or /transactions.json

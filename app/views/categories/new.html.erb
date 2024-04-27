@@ -1,9 +1,12 @@
-<h1>New category</h1>
-
-<%= render "form", category: @category %>
-
-<br>
-
-<div>
-  <%= link_to "Back to categories", categories_path %>
+<div class="text-center">
+  <div style="margin: 20px 400px 30px 400px">
+    <div class="card text-white bg-info text-center">
+      <div class="card-header shadow p-3 mb-5 bg-grey rounded", style = "text-shadow: 2px 2px #8B4513;"><h1>New category</h1></div>
+      <%= render "form", category: @category %>
+      <br>
+      <div>
+        <%= link_to "Back to categories", categories_path, class:"btn btn-light text-info border border-secondary mb-5" , style:"font-weight: bold;" %>
+      </div>
+    </div>
+  </div>
 </div>

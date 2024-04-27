@@ -49,11 +49,13 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    @category.destroy
-
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
-      format.json { head :no_content }
+    if @category.transactions.any?
+      redirect_to categories_url, alert: "Category cannot be deleted because it has associated transactions."
+    else
+      @category.destroy
+      respond_to do |format|
+        format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
+      end
     end
   end
 

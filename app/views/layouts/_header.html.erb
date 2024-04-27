@@ -10,6 +10,17 @@
         <li class="nav-item">
           <%= link_to "Reports", reports_index_path, class:"nav-link text-info" %>
         </li>
+        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+              </a>
+              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <ul>
+                  <%= link_to "Create", new_category_path, class:" mb-1 btn btn-secondary text-light", style:"margin-left: 15px;" %>
+                  <%= link_to "Show all", categories_path, class:"ms-2 btn btn-secondary text-light" %>
+                </ul>
+              </div>
+        </li>
          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Transactions

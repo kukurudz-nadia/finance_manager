@@ -1,10 +1,20 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @category %>
-
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
-
-  <%= button_to "Destroy this category", @category, method: :delete %>
+<div style="margin: 20px 250px 30px 250px">
+  <div class="card text-white bg-light text-center">
+    <div class="card-body">
+      <%= render @category %>
+    <div>
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-4">
+          <%= link_to "Edit this category", edit_category_path(@category), class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;" %>
+        </div>
+        <div class="col-4">
+          <%= button_to "Destroy this category", @category, method: :delete , class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;"%>
+        </div>
+        <div class="col-4">
+          <%= link_to "Back to categories", categories_path, class:"btn btn-light text-info border border-secondary" , style:"font-weight: bold;" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
