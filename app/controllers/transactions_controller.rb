@@ -13,6 +13,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @categories = Category.all
   end
 
   # GET /transactions/1/edit

@@ -32,10 +32,10 @@ class ReportsController < ApplicationController
     @dates << Date.parse(@@params[:date_to]).strftime("%d-%m-%Y")
     @kind = @@params[:kind].downcase
   end
-  
+
   def report_by_dates
     @transactions = Transaction.where(kind: @@params[:kind]).where('odate BETWEEN ? AND ?', @@params[:date_from], @@params[:date_to]).group('odate::date').sum(:amount)
-    
+
     #for views
     @dates = []
     @sum = []
