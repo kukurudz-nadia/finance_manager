@@ -18,31 +18,43 @@ class ReportsController < ApplicationController
       @categories.store(category.name, Transaction.where(category_id: category_id).sum(:amount))
     end
 
-    @total_sum = @categories.values.sum
+    if @categories.nil? || @categories.empty?
+     redirect_to reports_report_by_category_path, alert: 'You have to fill the form correctly'
+    else
+      @total_sum = @categories.values.sum
 
-    #for views
-    @category_names = []
-    @amount = []
-    @categories.each do |name, amount|
-      @category_names << name
-      @amount << amount
+      #for views
+      @category_names = []
+      @amount = []
+      @categories.each do |name, amount|
+        @category_names << name
+        @amount << amount
+      end
+      @dates = []
+      @dates << Date.parse(@@params[:date_from]).strftime("%d/%m/%Y")
+      @dates << Date.parse(@@params[:date_to]).strftime("%d/%m/%Y")
+      @kind = @@params[:kind].downcase
     end
-    @dates = []
-    @dates << Date.parse(@@params[:date_from]).strftime("%d-%m-%Y")
-    @dates << Date.parse(@@params[:date_to]).strftime("%d-%m-%Y")
-    @kind = @@params[:kind].downcase
   end
 
+
   def report_by_dates
-    @transactions = Transaction.where(kind: @@params[:kind]).where('odate BETWEEN ? AND ?', @@params[:date_from], @@params[:date_to]).group('odate::date').sum(:amount)
+    @transactions = Transaction.where(kind: @@params[:kind])
+                               .where('odate BETWEEN ? AND ?', @@params[:date_from], @@params[:date_to])
+                               .select("odate::date, sum(amount) as total_amount, array_agg(description) as descriptions")
+                               .group("odate::date")
 
     #for views
     @dates = []
     @sum = []
-    @transactions.each do |date, sum|
-      reversed_date = date.strftime("%d-%m-%Y")
+    @descriptions = []
+    @kind = @@params[:kind].downcase
+
+    @transactions.each do |transaction|
+      reversed_date = transaction.odate.strftime("%d-%m-%Y")
       @dates << reversed_date
-      @sum << sum.to_s
+      @sum << transaction.total_amount.to_s
+      @descriptions << transaction.descriptions.join(", ")  
     end
   end
 end

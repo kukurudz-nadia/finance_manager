@@ -1,9 +1,15 @@
-<div style = "width:1000px; height:800px;">
-  <canvas id="myChart"></canvas>
+<div style="text-align: center; margin: auto; width: fit-content;" class="mt-4">
+  <h2>Report from <%= @dates.first %> to <%= @dates.last %></h2>
+  <h2>Kind: <%= @kind %></h2>
+  <div style="width:1000px; height:800px; margin: 40px auto;">
+    <canvas id="myChart"></canvas>
+  </div>
 </div>
+
 
 <script>
   const ctx = document.getElementById('myChart');
+  const transactionDescriptions = <%= raw @descriptions.to_json.html_safe %>;
 
   new Chart(ctx, {
     type: 'line',
@@ -19,6 +25,14 @@
       scales: {
         y: {
           beginAtZero: true
+        }
+      },plugins: {
+        tooltip: {
+          callbacks: {
+            afterLabel: function(tooltipItem) {
+              return 'Description: ' + transactionDescriptions[tooltipItem.dataIndex];
+            }
+          }
         }
       }
     }

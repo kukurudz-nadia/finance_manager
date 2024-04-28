@@ -1,55 +1,66 @@
-<% if @categories.nil? or @categories.empty?%>
-  <h1>You have to fill the form correctly</h1>
-<% else %>
-<div style = "margin: 40px 800px 80px 100px;">
-<h1>Report from <%= @dates.first %> to <%=  @dates.last%></h1>
-<h2>Kind: <%=  @kind %></h2>
-<table class="table table-bordered table-striped">
-  <thead class="bg-info">
-    <tr>
-      <th scope="col">Category</th>
-      <th scope="col">Sum</th>
-    </tr>
-  </thead>
-  <tbody class="table-info">
-    <tr>
-      <% @categories.each do |name, amount|%>
-      <tr>
-        <td><%= name %></td>
-        <td><%= amount %></td>
-      </tr>
-      <%end%>
-    </tr>
-
-  </tbody>
-  <tfoot class="table-secondary">
-    <tr>
-      <td>Total sum:</td>
-      <td><%= @total_sum %></td>
-    </tr>
-  </tfoot>
-</table>
-</div>
-<div style = "width:600px; height:400px;", class = "mb-5">
-  <canvas id="pie-chart"></canvas>
+<div class="mt-4 mb-5">
+  <h2 style="text-align: center;">Report from <%= @dates.first %> to <%= @dates.last %></h2>
+  <h2 style="text-align: center;">Kind: <%= @kind %></h2>
+  <div style="overflow-x: auto; display: flex; justify-content: center;">
+    <table class="table table-bordered table-striped mb-5" style="margin: auto; width: 700px;">
+      <thead class="bg-info">
+        <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Sum</th>
+        </tr>
+      </thead>
+      <tbody class="table-info">
+        <% @categories.each do |name, amount| %>
+        <tr>
+          <td><%= name %></td>
+          <td><%= amount %></td>
+        </tr>
+        <% end %>
+      </tbody>
+      <tfoot class="table-secondary">
+        <tr>
+          <td>Total sum:</td>
+          <td><%= @total_sum %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div style="display: flex; justify-content: center; width: 600px; height: 400px; margin: auto;">
+    <canvas id="pie-chart"></canvas>
+  </div>
 </div>
 
 <script>
-new Chart(document.getElementById("pie-chart"), {
+  new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
-      labels: <%=raw @category_names%>,
+      labels: <%= raw @category_names %>,
       datasets: [{
         label: "Sum",
         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: <%=raw @amount%>
+        data: <%= raw @amount %>
       }]
     },
     options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(tooltipItem) {
+              let sum = 0;
+              let dataArr = tooltipItem.dataset.data;
+              dataArr.map(data => {
+                sum += data;
+              });
+              let percentage = (dataArr[tooltipItem.dataIndex] / sum * 100).toFixed(2) + "%";
+              return percentage;
+            }
+          }
+        }
+      },
       title: {
         display: true,
       }
     }
-});
+  });
 </script>
-<%end%>
