@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  rescue_from StandardError, with: :handle_exception
+  
   def index
     @@params = params
   end
@@ -56,5 +58,13 @@ class ReportsController < ApplicationController
       @sum << transaction.total_amount.to_s
       @descriptions << transaction.descriptions.join(", ")  
     end
+  end
+
+  private
+
+  def handle_exception(exception)
+    logger.error exception.message
+    logger.error exception.backtrace.join("\n")
+    redirect_to root_path, alert: "An unexpected error occurred. Please try again later."
   end
 end
